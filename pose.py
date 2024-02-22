@@ -1,9 +1,14 @@
 import ultralytics
 from ultralytics import YOLO
-import numpy as np
+import cv2
+import time
 
 model = YOLO('yolov8l-pose.pt')
-source = np.random.randint(low=0, high=255, size=(640, 640, 3), dtype='uint8')
-results = model(source)  
+vid = cv2.VideoCapture(0) 
 
-print(results)
+if not vid.isOpened():
+    print("Error: Could not open camera.")
+    exit()
+
+
+
